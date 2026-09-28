@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="app_name">KNRJapota</string>
+
+
+
+    <string name="judul_snack">Japota\nHoney Butter</string>
+    <string name="deskripsi_snack">
+    Japota Happy Honey Butter merupakan snack kentang dengan rasa honey butter yang memiliki perpaduan rasa gurih,
+        manis, dan aroma butter. Snack ini cocok dinikmati sebagai camilan. </string>
+    <string name="judul_gizi">Informasi Nilai Gizi</string>
+    <string name="takaran_saji">Takaran Saji</string>
+    <string name="nilai_takaran">28 g</string>
+    <string name="energi_total">Energi Total</string>
+    <string name="nilai_energi">150 kkal</string>
+    <string name="lemak_total">Lemak Total</string>
+    <string name="nilai_lemak">9 g</string>
+    <string name="lemak_jenuh">Lemak Jenuh</string>
+    <string name="nilai_lemak_jenuh">4,5 g</string>
+    <string name="protein">Protein</string>
+    <string name="nilai_protein">2 g</string>
+    <string name="karbohidrat">Karbohidrat Total</string>
+    <string name="nilai_karbohidrat">15 g</string>
+    <string name="gula">Gula</string>
+    <string name="nilai_gula">2 g</string>
+    <string name="natrium">Natrium</string>
+    <string name="nilai_natrium">160 mg</string>
+
+</resources>

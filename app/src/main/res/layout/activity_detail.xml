@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFBF2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/textJudul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/judul_snack"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="#934A16"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:fontFamily="@font/bricolage_grotesque" />
+
+        <ImageView
+            android:id="@+id/imageSnack"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="25dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/japota"
+            android:contentDescription="@string/judul_snack" />
+
+        <TextView
+            android:id="@+id/textDeskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/deskripsi_snack"
+            android:textSize="17sp"
+            android:textColor="#934A16"
+            android:lineSpacingExtra="4dp"
+            android:fontFamily="@font/bricolage_grotesque" />
+
+        <!--gizi-->
+        <TextView
+            android:id="@+id/textJudulGizi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/judul_gizi"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#934A16"
+            android:fontFamily="@font/bricolage_grotesque" />
+
+        <!--takaran saji-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/takaran_saji"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nilai_takaran"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!--energi-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/energi_total"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nilai_energi"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!--lemak-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/lemak_total"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nilai_lemak"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!--lemak jenuh-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/lemak_jenuh"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nilai_lemak_jenuh"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!--protein-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/protein"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nilai_protein"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!--karbohidrat-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/karbohidrat"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nilai_karbohidrat"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!--gula-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/gula"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nilai_gula"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!--natrium-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/natrium"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nilai_natrium"
+                android:textSize="14sp"
+                android:textColor="#934A16"
+                android:fontFamily="@font/bricolage_grotesque"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
