@@ -31,6 +31,7 @@ class WebViewActivity : AppCompatActivity() {
             title = "Badminton Info"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         }
 
         binding.webView.webViewClient = WebViewClient()
