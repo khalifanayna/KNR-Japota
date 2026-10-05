@@ -30,7 +30,7 @@
         android:layout_width="249dp"
         android:layout_height="232dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/logoproject"
+        android:src="@drawable/logo_project"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
         app:layout_constraintVertical_bias="0.446" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnMyProject"
+        android:id="@+id/btnGetStarted"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50sp"
