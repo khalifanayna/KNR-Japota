@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KNRJapota">
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -37,6 +37,14 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".WebViewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ProfileActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>

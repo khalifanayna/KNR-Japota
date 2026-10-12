@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1C1710"
+    tools:context=".ProfileActivity">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#FFC93C"
+        app:titleTextColor="@android:color/white"
+        app:subtitleTextColor="@android:color/white" />
+
+    <!-- Content Profile -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:padding="22dp">
+
+        <!-- Nama Developer -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/archivoblackregular"
+            android:text="My Profile"
+            android:textColor="#FFC93C"
+            android:textSize="28sp" />
+
+        <!-- Developer Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_profile_menu"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HELLO, I'M"
+                android:textColor="#FFC93C"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/txtDeveloperName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/archivoblackregular"
+                android:text="Khalifa Nayna Rizalni"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_role"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="Student &amp; App Developer"
+                android:textColor="#1C1710"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <!-- About Me -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/archivoblackregular"
+            android:text="About Me"
+            android:textColor="#FFFFFF"
+            android:textSize="21sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_role"
+            android:padding="18dp"
+            android:fontFamily="@font/instrumentsans"
+            android:lineSpacingExtra="4dp"
+            android:text="Saya mahasiswa Teknik Informatika yang tertarik mempelajari pengembangan aplikasi dan desain antarmuka. SmashBooking merupakan proyek aplikasi booking lapangan badminton yang saya kembangkan."
+            android:textColor="#1C1710"
+            android:textSize="15sp" />
+
+        <!-- Logout -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_button"
+            android:backgroundTint="@null"
+            android:fontFamily="@font/archivoblackregular"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

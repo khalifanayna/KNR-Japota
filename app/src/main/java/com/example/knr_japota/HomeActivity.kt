@@ -31,6 +31,11 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnProfile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
             title = "Back"
