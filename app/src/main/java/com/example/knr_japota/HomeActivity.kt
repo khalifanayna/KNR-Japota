@@ -3,11 +3,11 @@ package com.example.knr_japota
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.webkit.WebViewClient
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.knr_japota.Home.WebViewActivity
 import com.example.knr_japota.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {

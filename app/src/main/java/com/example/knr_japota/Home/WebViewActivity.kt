@@ -1,4 +1,4 @@
-package com.example.knr_japota
+package com.example.knr_japota.Home
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.knr_japota.databinding.ActivityLoginBinding
+import com.example.knr_japota.R
 import com.example.knr_japota.databinding.ActivityWebViewBinding
 
 class WebViewActivity : AppCompatActivity() {
