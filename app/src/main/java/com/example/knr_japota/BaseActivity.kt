@@ -6,6 +6,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import com.example.knr_japota.Home.HomeFragment
+import com.example.knr_japota.Info.InfoFragment
+import com.example.knr_japota.Profile.ProfileFragment
 import com.example.knr_japota.databinding.ActivityBaseBinding
 import com.example.knr_japota.databinding.ActivityMainBinding
 
@@ -24,25 +28,33 @@ class BaseActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
+
+        /** HomeFragment sebagai fragment default */
+        replaceFragment(HomeFragment())
+
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> {
-                    Toast.makeText(this, "Home Clicked", Toast.LENGTH_SHORT).show()
+                    replaceFragment(HomeFragment())
                     true
                 }
-
                 R.id.info -> {
-                    Toast.makeText(this, "Info Clicked", Toast.LENGTH_SHORT).show()
+                    replaceFragment(InfoFragment())
                     true
                 }
-
                 R.id.profile -> {
-                    Toast.makeText(this, "Profile Clicked", Toast.LENGTH_SHORT).show()
+                    replaceFragment(ProfileFragment())
                     true
                 }
-
-                else -> false // return false jika item tidak ada yang di klik
+                else -> false
             }
         }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(binding.fragmentContainer.id, fragment)
+            //.addToBackStack(null) -> ini kita nonaktifkan agar saat back langsung keluar aplikasi
+            .commit()
     }
 }

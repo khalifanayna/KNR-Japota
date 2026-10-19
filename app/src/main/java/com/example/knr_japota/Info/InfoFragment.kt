@@ -1,18 +1,21 @@
 package com.example.knr_japota.Info
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.knr_japota.R
+import androidx.fragment.app.Fragment
+import com.example.knr_japota.databinding.FragmentInfoBinding
+
 class InfoFragment : Fragment() {
+    private var _binding: FragmentInfoBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info, container, false)
+        _binding = FragmentInfoBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }
