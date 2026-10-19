@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
                 editor.putString("username", username)
                 editor.apply()
 
-                startActivity(Intent(this, HomeActivity::class.java))
+                startActivity(Intent(this, BaseActivity::class.java))
                 finish()
             } else {
                 Toast.makeText(this, "Username atau password salah", Toast.LENGTH_SHORT).show()

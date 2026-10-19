@@ -12,11 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#A97C21"
-        app:titleTextColor="@android:color/white"
-        app:subtitleTextColor="@android:color/white"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:backgroundTint="#A97C21"
+        app:titleTextColor="@android:color/white" />
 
     <TextView
         android:id="@+id/textView"

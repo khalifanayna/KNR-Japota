@@ -1,5 +1,6 @@
 package com.example.knr_japota
 
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -31,19 +32,23 @@ class BaseActivity : AppCompatActivity() {
 
         /** HomeFragment sebagai fragment default */
         replaceFragment(HomeFragment())
+        setNavColor("#A97C21")
 
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> {
                     replaceFragment(HomeFragment())
+                    setNavColor("#A97C21")
                     true
                 }
                 R.id.info -> {
                     replaceFragment(InfoFragment())
+                    setNavColor("#FFC93C")
                     true
                 }
                 R.id.profile -> {
                     replaceFragment(ProfileFragment())
+                    setNavColor("#FFC93C")
                     true
                 }
                 else -> false
@@ -56,5 +61,9 @@ class BaseActivity : AppCompatActivity() {
             .replace(binding.fragmentContainer.id, fragment)
             //.addToBackStack(null) -> ini kita nonaktifkan agar saat back langsung keluar aplikasi
             .commit()
+    }
+
+    private fun setNavColor(hex: String) {
+        binding.bottomNavView.setBackgroundColor(Color.parseColor(hex))
     }
 }
