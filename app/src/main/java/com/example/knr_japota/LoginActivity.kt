@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+        val registerPref = getSharedPreferences("register_pref", Context.MODE_PRIVATE)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -38,17 +39,31 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Username & password wajib diisi", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (username == "nayna" && password == "12345") {
+
+            // data hasil registrasi (null kalau belum pernah registrasi)
+            val savedUsername = registerPref.getString("username", null)
+            val savedPassword = registerPref.getString("password", null)
+
+            // Rule 1: username sama dengan password
+            val rule1 = username == password
+            // Rule 2: cocok dengan data di SharedPreferences
+            val rule2 = username == savedUsername && password == savedPassword
+
+            if (rule1 || rule2) {
                 val editor = sharedPref.edit()
                 editor.putBoolean("isLogin", true)
                 editor.putString("username", username)
                 editor.apply()
 
-                startActivity(Intent(this, BaseActivity::class.java))
+                startActivity(Intent(this, BaseActivity::class.java)) // HomeActivity kalau belum diganti
                 finish()
             } else {
                 Toast.makeText(this, "Username atau password salah", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.tvRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
 
         setSupportActionBar(binding.toolbar)
