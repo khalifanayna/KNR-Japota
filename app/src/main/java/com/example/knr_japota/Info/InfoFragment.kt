@@ -32,7 +32,6 @@ class InfoFragment : Fragment() {
         binding.cardLapangan1.setOnClickListener { bukaBooking("Lapangan 1") }
         binding.cardLapangan2.setOnClickListener { bukaBooking("Lapangan 2") }
     }
-
     private fun bukaBooking(namaLapangan: String) {
         val intent = Intent(requireContext(), BookingActivity::class.java)
         intent.putExtra("namaLapangan", namaLapangan)

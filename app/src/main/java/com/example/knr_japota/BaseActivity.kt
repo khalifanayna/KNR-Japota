@@ -41,7 +41,7 @@ class BaseActivity : AppCompatActivity() {
                     setNavColor("#A97C21")
                     true
                 }
-                R.id.info -> {
+                R.id.lapangan -> {
                     replaceFragment(InfoFragment())
                     setNavColor("#FFC93C")
                     true
