@@ -6,9 +6,9 @@
         android:title="Home" />
 
     <item
-        android:id="@+id/info"
-        android:icon="@drawable/ic_info"
-        android:title="Info" />
+        android:id="@+id/Lapangan"
+        android:icon="@drawable/ic_lapangan"
+        android:title="Lapangan" />
 
     <item
         android:id="@+id/profile"
