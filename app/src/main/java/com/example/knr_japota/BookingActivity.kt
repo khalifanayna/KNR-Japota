@@ -83,7 +83,6 @@ class BookingActivity : AppCompatActivity() {
         try {
             startActivity(mapIntent)
         } catch (e: ActivityNotFoundException) {
-            // cadangan: buka lewat browser kalau aplikasi peta tidak ada
             val webIntent = Intent(
                 Intent.ACTION_VIEW,
                 Uri.parse("https://www.google.com/maps/search/?api=1&query=$query")
