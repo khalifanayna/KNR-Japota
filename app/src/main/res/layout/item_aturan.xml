@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvNomor"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/bg_lingkaran_kuning"
+        android:gravity="center"
+        android:textColor="#1B1408"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvAturan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/instrumentsans"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+</LinearLayout>

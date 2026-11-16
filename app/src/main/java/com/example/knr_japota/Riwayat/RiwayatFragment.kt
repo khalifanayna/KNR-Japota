@@ -16,10 +16,18 @@ class RiwayatFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val riwayatList = listOf(
-        RiwayatModel("Lapangan 1", "GOR Gabus Rumbai", "Sel, 17 Nov 2026 | 19:00 - 20:00", "Rp 35.000", "Aktif", R.drawable.lapangangor),
-        RiwayatModel("Lapangan 2", "GOR Gabus Rumbai", "Kam, 19 Nov 2026 | 15:00 - 16:00", "Rp 35.000", "Menunggu", R.drawable.lapangangor),
+        RiwayatModel("Lapangan 1", "GOR Gabus Rumbai", "Sel, 1 Dec 2026 | 19:00 - 20:00", "Rp 35.000", "Menunggu", R.drawable.lapangangor),
+        RiwayatModel("Lapangan 2", "GOR Gabus Rumbai", "Kam, 19 Mar 2026 | 15:00 - 16:00", "Rp 35.000", "Aktif", R.drawable.lapangangor),
         RiwayatModel("Lapangan 2", "GOR Gabus Rumbai", "Sab, 12 Sep 2026 | 15:00 - 16:00", "Rp 35.000", "Selesai", R.drawable.lapangangor),
-        RiwayatModel("Lapangan 1", "GOR Gabus Rumbai", "Min, 11 Jan 2026 | 21:00 - 22:00", "Rp 35.000", "Ditolak", R.drawable.lapangangor)
+        RiwayatModel("Lapangan 1", "GOR Gabus Rumbai", "Min, 11 Feb 2026 | 21:00 - 22:00", "Rp 35.000", "Aktif", R.drawable.lapangangor),
+        RiwayatModel("Lapangan 1", "GOR Gabus Rumbai", "Rab, 22 Nov 2026 | 19:00 - 20:00", "Rp 35.000", "Menunggu", R.drawable.lapangangor),
+        RiwayatModel("Lapangan 2", "GOR Gabus Rumbai", "Jum, 11 Okt 2026 | 15:00 - 16:00", "Rp 35.000", "Menunggu", R.drawable.lapangangor),
+        RiwayatModel("Lapangan 2", "GOR Gabus Rumbai", "Sen, 21 Apr 2026 | 15:00 - 16:00", "Rp 35.000", "Selesai", R.drawable.lapangangor),
+        RiwayatModel("Lapangan 1", "GOR Gabus Rumbai", "Min, 23 Mei 2026 | 21:00 - 22:00", "Rp 35.000", "Ditolak", R.drawable.lapangangor),
+        RiwayatModel("Lapangan 1", "GOR Gabus Rumbai", "Kam, 3 Jun 2026 | 19:00 - 20:00", "Rp 35.000", "Aktif", R.drawable.lapangangor),
+        RiwayatModel("Lapangan 2", "GOR Gabus Rumbai", "Min, 5 Nov 2026 | 15:00 - 16:00", "Rp 35.000", "Menunggu", R.drawable.lapangangor),
+        RiwayatModel("Lapangan 2", "GOR Gabus Rumbai", "Sab, 2 Sep 2026 | 15:00 - 16:00", "Rp 35.000", "Selesai", R.drawable.lapangangor),
+        RiwayatModel("Lapangan 1", "GOR Gabus Rumbai", "Sen, 30 Jan 2026 | 21:00 - 22:00", "Rp 35.000", "Ditolak", R.drawable.lapangangor)
     )
 
     override fun onCreateView(

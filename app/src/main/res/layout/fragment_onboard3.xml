@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Onboard.Onboard3Fragment">
+
+    <TextView
+        android:id="@+id/btnMulai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_button"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="14dp"
+        android:text="Cek status pesananmu di menu Riwayat, dan terima pengingat jadwal main di Notifikasi."
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</FrameLayout>
