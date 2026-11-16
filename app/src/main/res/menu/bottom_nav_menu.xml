@@ -4,12 +4,14 @@
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
         android:title="Home" />
-
     <item
         android:id="@+id/lapangan"
         android:icon="@drawable/ic_lapangan"
         android:title="Booking" />
-
+    <item
+        android:id="@+id/riwayat"
+        android:icon="@drawable/ic_history"
+        android:title="Riwayat" />
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_profile"

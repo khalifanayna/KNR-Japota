@@ -13,6 +13,7 @@ import com.example.knr_japota.Info.InfoFragment
 import com.example.knr_japota.Profile.ProfileFragment
 import com.example.knr_japota.databinding.ActivityBaseBinding
 import com.example.knr_japota.databinding.ActivityMainBinding
+import com.example.knr_japota.Riwayat.RiwayatFragment
 
 class BaseActivity : AppCompatActivity() {
 
@@ -49,6 +50,11 @@ class BaseActivity : AppCompatActivity() {
                 R.id.profile -> {
                     replaceFragment(ProfileFragment())
                     setNavColor("#FFC93C")
+                    true
+                }
+                R.id.riwayat -> {
+                    replaceFragment(RiwayatFragment())
+                    // kalau kamu memakai setNavColor, tambahkan: setNavColor("#8C5A00")
                     true
                 }
                 else -> false
