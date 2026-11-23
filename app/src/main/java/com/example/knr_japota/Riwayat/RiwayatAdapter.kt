@@ -37,7 +37,8 @@ class RiwayatAdapter(
                 "Aktif" -> "#1B1408"
                 "Menunggu" -> "#FF6A1A"
                 "Selesai" -> "#8C8C8C"
-                else -> "#E53935"   // Ditolak
+                "Berhasil" -> "#2E7D32"
+                else -> "#E53935"
             }
             tvStatus.backgroundTintList = ColorStateList.valueOf(Color.parseColor(warna))
 

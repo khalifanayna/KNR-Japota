@@ -8,7 +8,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.knr_japota.R
 import com.example.knr_japota.databinding.ActivitySewaBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-
+import android.content.Context
+import androidx.lifecycle.lifecycleScope
+import com.example.knr_japota.SupabaseConfig
+import com.example.knr_japota.api.SupabaseApi
+import com.example.knr_japota.Model.Perlengkapan
+import kotlinx.coroutines.launch
 class SewaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySewaBinding
@@ -52,20 +57,93 @@ class SewaActivity : AppCompatActivity() {
         }
 
         binding.btnSewa.setOnClickListener {
+
             val terpilih = semuaItem.filter { it.dipilih }
+
             if (terpilih.isEmpty()) {
-                Toast.makeText(this, "Pilih perlengkapan dulu", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Pilih perlengkapan dulu",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
-            val daftar = terpilih.joinToString("\n") { "- ${it.nama} (${formatRupiah(it.harga)})" }
-            MaterialAlertDialogBuilder(this)
-                .setTitle("Perlengkapan Dipesan")
-                .setMessage("$daftar\n\nTotal: ${formatRupiah(terpilih.sumOf { it.harga })}\n\nAmbil di petugas GOR saat datang.")
-                .setPositiveButton("OK") { dialog, _ ->
-                    dialog.dismiss()
-                    finish()
+
+            val sharedPref = getSharedPreferences(
+                "user_pref",
+                Context.MODE_PRIVATE
+            )
+
+            val userId = sharedPref.getString("user_id", null)
+            val token = sharedPref.getString("access_token", null)
+
+            if (userId.isNullOrEmpty() || token.isNullOrEmpty()) {
+                Toast.makeText(
+                    this,
+                    "Silakan login kembali",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+
+            lifecycleScope.launch {
+                try {
+                    val api = SupabaseConfig.createRetrofit(token)
+                        .create(SupabaseApi::class.java)
+
+                    var semuaBerhasil = true
+
+                    for (item in terpilih) {
+
+                        val data = Perlengkapan(
+                            userId = userId,
+                            namaPerlengkapan = item.nama,
+                            jumlah = 1,
+                            harga = item.harga.toInt(),
+                            totalHarga = item.harga.toInt()
+                        )
+
+                        val response = api.createPerlengkapan(data)
+
+                        if (!response.isSuccessful) {
+                            semuaBerhasil = false
+                            Toast.makeText(
+                                this@SewaActivity,
+                                "Gagal menyimpan ${item.nama}: " +
+                                        response.errorBody()?.string(),
+                                Toast.LENGTH_LONG
+                            ).show()
+                            break
+                        }
+                    }
+
+                    if (semuaBerhasil) {
+                        val total = terpilih.sumOf { it.harga }
+
+                        MaterialAlertDialogBuilder(this@SewaActivity)
+                            .setTitle("Penyewaan Berhasil")
+                            .setMessage(
+                                terpilih.joinToString("\n") {
+                                    "- ${it.nama}"
+                                } +
+                                        "\n\nTotal: ${formatRupiah(total)}" +
+                                        "\n\nSilakan ambil perlengkapan di petugas GOR."
+                            )
+                            .setPositiveButton("OK") { dialog, _ ->
+                                dialog.dismiss()
+                                finish()
+                            }
+                            .show()
+                    }
+
+                } catch (e: Exception) {
+                    Toast.makeText(
+                        this@SewaActivity,
+                        "Terjadi kesalahan: ${e.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
-                .show()
+            }
         }
 
         perbaruiRingkasan()

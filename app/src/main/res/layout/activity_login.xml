@@ -50,12 +50,13 @@
         app:layout_constraintVertical_bias="0.26" />
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etEmail"
         android:layout_width="304dp"
         android:layout_height="52dp"
         android:background="@drawable/bg_edittext_outline"
         android:fontFamily="@font/instrumentsans"
-        android:hint="Username"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="#FFFFFF"

@@ -15,11 +15,16 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import androidx.lifecycle.lifecycleScope
+import com.example.knr_japota.api.SupabaseApi
+import com.example.knr_japota.Model.Booking
+import kotlinx.coroutines.launch
 
 class BookingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBookingBinding
     private var tanggalDipilih: String? = null
+    private val tanggalIsoMap = mutableMapOf<String, String>()
     private var jamDipilih: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +55,7 @@ class BookingActivity : AppCompatActivity() {
         binding.rvTanggal.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvTanggal.adapter = PilihanAdapter(buatDaftarTanggal(), R.layout.item_tanggal) {
-            tanggalDipilih = it.replace("\n", " ")
+            tanggalDipilih = tanggalIsoMap[it]
         }
 
         val daftarJam = listOf(
@@ -63,18 +68,103 @@ class BookingActivity : AppCompatActivity() {
         }
 
         binding.btnBooking.setOnClickListener {
-            if (tanggalDipilih == null || jamDipilih == null) {
-                Toast.makeText(this, "Pilih tanggal dan jam dulu", Toast.LENGTH_SHORT).show()
+            val tanggal = tanggalDipilih
+            val jam = jamDipilih
+            if (tanggal == null || jam == null) {
+                Toast.makeText(
+                    this,
+                    "Pilih tanggal dan jam dulu",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
-            MaterialAlertDialogBuilder(this)
-                .setTitle("Booking Dikirim")
-                .setMessage("$namaLapangan\n$tanggalDipilih\n$jamDipilih\nTotal: Rp 35.000\n\nMenunggu konfirmasi petugas.")
-                .setPositiveButton("OK") { dialog, _ ->
-                    dialog.dismiss()
-                    finish()
+            val sharedPref = getSharedPreferences(
+                "user_pref",
+                Context.MODE_PRIVATE
+            )
+            val userId = sharedPref.getString("user_id", null)
+            val token = sharedPref.getString("access_token", null)
+            if (userId.isNullOrEmpty() || token.isNullOrEmpty()) {
+                Toast.makeText(
+                    this,
+                    "Silakan login kembali",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+            lifecycleScope.launch {
+                try {
+                    val api = SupabaseConfig.createRetrofit(token)
+                        .create(SupabaseApi::class.java)
+
+                    // Periksa jadwal booking milik pengguna
+                    val cek = api.getBookings()
+
+                    if (!cek.isSuccessful) {
+                        Toast.makeText(
+                            this@BookingActivity,
+                            "Gagal memeriksa jadwal",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        return@launch
+                    }
+                    val jamMulai = jam.substringBefore(" - ")
+                    val jamSelesai = jam.substringAfter(" - ")
+
+                    val bentrok = cek.body().orEmpty().any {
+                        it.namaLapangan == namaLapangan &&
+                                it.tanggal == tanggal &&
+                                it.jamMulai == jamMulai &&
+                                it.jamSelesai == jamSelesai &&
+                                it.status != "Selesai"
+                    }
+                    if (bentrok) {
+                        Toast.makeText(
+                            this@BookingActivity,
+                            "Jadwal tersebut sudah kamu booking",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        return@launch
+                    }
+                    val booking = Booking(
+                        userId = userId,
+                        namaLapangan = namaLapangan,
+                        tanggal = tanggal,
+                        jamMulai = jamMulai,
+                        jamSelesai = jamSelesai,
+                        harga = 35000,
+                        status = "Menunggu"
+                    )
+                    val response = api.createBooking(booking)
+                    if (response.isSuccessful) {
+                        MaterialAlertDialogBuilder(this@BookingActivity)
+                            .setTitle("Booking Berhasil")
+                            .setMessage(
+                                "$namaLapangan\n$tanggal\n$jam\n" +
+                                        "Total: Rp 35.000\n\n" +
+                                        "Status: Menunggu konfirmasi."
+                            )
+                            .setPositiveButton("OK") { dialog, _ ->
+                                dialog.dismiss()
+                                finish()
+                            }
+                            .show()
+                    } else {
+                        Toast.makeText(
+                            this@BookingActivity,
+                            "Gagal booking: ${response.errorBody()?.string()}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
+                } catch (e: Exception) {
+                    Toast.makeText(
+                        this@BookingActivity,
+                        "Terjadi kesalahan: ${e.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
-                .show()
+            }
         }
     }
     private fun bukaGoogleMaps(lokasi: String) {
@@ -99,15 +189,25 @@ class BookingActivity : AppCompatActivity() {
         val hasil = mutableListOf<String>()
         val kalender = Calendar.getInstance()
         val lokal = Locale("id", "ID")
+
         val hari = SimpleDateFormat("EEE", lokal)
         val tanggal = SimpleDateFormat("d", lokal)
         val bulan = SimpleDateFormat("MMM", lokal)
+        val formatDatabase = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
-        val jumlahHari = 365
-        repeat (jumlahHari) {
-            hasil.add("${hari.format(kalender.time)}\n${tanggal.format(kalender.time)}\n${bulan.format(kalender.time)}")
+        repeat(365) {
+            val tampilan =
+                "${hari.format(kalender.time)}\n" +
+                        "${tanggal.format(kalender.time)}\n" +
+                        bulan.format(kalender.time)
+
+            hasil.add(tampilan)
+            tanggalIsoMap[tampilan] =
+                formatDatabase.format(kalender.time)
+
             kalender.add(Calendar.DAY_OF_MONTH, 1)
         }
+
         return hasil
     }
 
